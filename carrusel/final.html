@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-2.0.3.min.js"></script>	
+	<script src="jcarousellite_1.0.1c5.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="normalize.css" />	
+	<link rel="stylesheet" type="text/css" href="estilos.css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0; background:#fff;}
+#slidebox{position:relative; border:1px solid #ccc; margin:40px auto;overflow:hidden;}
+-->
+</style>	
+</head>
+<body>
+	<h1>Hola Mundo</h1>
+
+<div id="slidebox">
+	<div class="next"></div>
+	<div class="previous"></div>
+	<div class="thumbs">
+		<a href="#" onClick="" class="1 thumbActive">1</a> 
+		<a href="#" onClick="" class="2">2</a> 
+		<a href="#" onClick="" class="3 ">3</a> 
+		<a href="#" onClick="" class="4">4</a> 
+	</div>
+		<ul>
+	    	<li><img src="images/pic1.jpg" title="Funky roots"/></li>
+	    	<li><img src="images/pic2.jpg" title="Funky roots"/></li>
+	    	<li><img src="images/pic3.jpg" title="Funky roots"/></li>
+	    	<li><img src="images/pic4.jpg" title="Funky roots"/></li>
+		</ul>
+</div>
+
+</body>
+
+<script type="text/javascript">
+	$(function() {
+		$("#slidebox").jCarouselLite({
+			vertical: false,
+			hoverPause:true,
+			btnPrev: ".previous",
+			btnNext: ".next",
+			visible: 1,
+			start: 0,
+			scroll: 1,
+			circular: true,
+			auto:1000,
+			speed:500,
+			captions: true,				
+			btnGo:
+			    [".1", ".2",
+			    ".3", ".4"],
+			
+			afterEnd: function(a, to, btnGo) {
+					if(btnGo.length <= to){
+						to = 0;
+					}
+					$(".thumbActive").removeClass("thumbActive");
+					$(btnGo[to]).addClass("thumbActive");
+			    }
+		});
+	});
+</script>
+
+</html>
